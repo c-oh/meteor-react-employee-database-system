@@ -1,0 +1,29 @@
+//only executes on server
+
+import _ from 'loadash'; 
+import {Meteor} from 'meteor/meteor';
+import {Employees} from  '../imports/collections/employees';
+import {image, helpers} from 'faker';
+
+Meteor.startup (()=> {
+//Generate data here
+
+//Before we generate data, check if the data exists in the collection
+
+//To see if the collection has records:
+//The ({}) makes sure it does not go through a filter, find every collection there is
+const numberRecords = Employees.find({}).count();
+
+//! means NOT
+
+if (!numberRecords){
+    //generate some fake data
+
+    //this is a lodash helper to help clean up a for loop
+    // this is a function ->
+    _.times(5000, () => {
+        const {name, email, phone} = helpers.createCard();
+    });
+}
+
+});
