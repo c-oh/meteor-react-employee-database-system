@@ -13,6 +13,8 @@ Meteor.startup(() => {
     //To see if the collection has records:
     //The ({}) makes sure it does not go through a filter, find every collection there is
     const numberRecords = Employees.find({}).count();
+
+    //console log will show up in terminal and not inspector tools because this is IN the server and not front end
     console.log(numberRecords);
 
     //! means NOT
