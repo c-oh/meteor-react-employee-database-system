@@ -26,10 +26,15 @@ Meteor.startup(() => {
         // this is a function ->
         _.times(5000, () => {
             const { name, email,phone } = helpers.createCard();
+            
             Employees.insert({ name, email, phone, avatar: image.avatar()
 
             });
         });
     }
+
+Meteor.publish('employees', function(){
+    return Employees.find({}, {limit:20});
+});
 
 });
